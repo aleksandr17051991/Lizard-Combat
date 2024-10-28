@@ -10,7 +10,7 @@ circle.addEventListener('click', (event) => {
   const offsetX = event.clientX - rect.left - rect.width / 2;
   const offsetY = event.clientY - rect.top - rect.height / 2;
 
-  const DEG = 60;
+  const DEG = 50;
 
   const tiltX = (offsetY / rect.height) * DEG;
   const tiltY = (offsetX / rect.width) * DEG;
@@ -22,4 +22,19 @@ circle.addEventListener('click', (event) => {
     circle.style.setProperty('--tiltX', `0deg`);
     circle.style.setProperty('--tiltY', `0deg`);
   }, 300);
+
+  //adding echievement's marker "+1" near by img
+
+  const plusOneMarker = document.createElement('div');
+
+  plusOneMarker.classList.add('plus-one-marker');
+  plusOneMarker.textContent = '+1';
+  plusOneMarker.style.left = `${event.clientX - rect.left}px`;
+  plusOneMarker.style.top = `${event.clientY - rect.top}px`;
+
+  circle.parentElement.appendChild(plusOneMarker);
+
+  setTimeout(() => {
+    plusOneMarker.remove();
+  }, 2000);
 });

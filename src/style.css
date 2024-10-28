@@ -31,6 +31,7 @@ body {
 
 .circle {
   position: relative;
+  user-select: none;
 }
 
 .circle img {
@@ -42,5 +43,32 @@ body {
   --tiltY: 0deg;
   transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
   transition: transform 0.3s ease; 
+}
+
+/* plus one marker */
+.plus-one-marker {
+  position: absolute;
+  text-shadow: 0px 0px 4px rgba(234, 182, 64, 0.25);
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(180deg, #e8c547 0%, #ef882b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  user-select: none;
+  animation: move-up 2s forwards;
+}
+
+@keyframes move-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
 }
 
