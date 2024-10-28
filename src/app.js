@@ -37,4 +37,11 @@ circle.addEventListener('click', (event) => {
   setTimeout(() => {
     plusOneMarker.remove();
   }, 2000);
+
+  //changing box-shadow color
+  circle.style.boxShadow = '0px 0px 20px 10px rgba(238, 145, 31, 0.2)';
+
+  setTimeout(() => {
+    circle.style.boxShadow = '0px 0px 20px 0px rgba(129, 68, 172, 0.4)';
+  }, 100);
 });
