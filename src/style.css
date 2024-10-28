@@ -12,7 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 .header img {
@@ -34,13 +34,13 @@ body {
 }
 
 .circle img {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   box-shadow: 0px 0px 20px 0px rgba(138, 143, 254, 0.4);
   --tiltX: 0deg;
   --tiltY: 0deg;
   transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
-  transition: transform 0.2s ease; 
+  transition: transform 0.3s ease; 
 }
 
