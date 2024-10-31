@@ -5,6 +5,7 @@ const score = document.querySelector('#score');
 
 function startApp() {
   setScore(getScore());
+  setImage();
 }
 
 function setScore(scoreValue) {
@@ -20,6 +21,15 @@ function getScore() {
 
 function addOneVal() {
   setScore(getScore() + 1);
+  setImage();
+}
+
+// set new PICTURE when your score above 50
+
+function setImage() {
+  if (getScore() >= 50) {
+    circle.setAttribute('src', './assets/lizzard.png');
+  }
 }
 
 //visual actions for Click on Lizard or Frog
@@ -44,6 +54,7 @@ circle.addEventListener('click', (event) => {
     circle.style.setProperty('--tiltX', `0deg`);
     circle.style.setProperty('--tiltY', `0deg`);
   }, 300);
+  //---------------------------------------------
 
   //adding achievement's marker "+1" near by img
 
@@ -62,6 +73,7 @@ circle.addEventListener('click', (event) => {
   setTimeout(() => {
     plusOneMarker.remove();
   }, 2000);
+  //---------------------------------------------
 
   //changing box-shadow color
   circle.style.boxShadow = '0px 0px 20px 10px rgba(238, 145, 31, 0.2)';
@@ -69,6 +81,7 @@ circle.addEventListener('click', (event) => {
   setTimeout(() => {
     circle.style.boxShadow = '0px 0px 20px 0px rgba(89, 62, 102, 0.48)';
   }, 100);
+  //---------------------------------------------
 });
 
 //start app and boots all echievements
