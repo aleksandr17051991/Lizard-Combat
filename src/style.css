@@ -3,25 +3,35 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   background-color: #241c2c;
 }
 
-.header {
+.header,
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.game {
+  min-height: 100vh;
+}
+
+.game-header {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 60px;
 }
 
-.header img {
+.game-header img {
   width: 60px;
   height: 60px;
   margin-right: 14px;
 }
 
-.header .score {
+.game-header .score {
   color: #fff;
   text-align: center;
   font-size: 36px;
@@ -73,3 +83,6 @@ body {
   }
 }
 
+.footer {
+  border: 2px solid blueviolet;
+}
