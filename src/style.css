@@ -105,7 +105,7 @@ footer a:hover {
   text-shadow: 1px 1px 8px #5f2bef;
 }
 
-.required-number {
+#required-number {
   font-size: 30px;
   color: #eb7208;
   text-shadow: none;

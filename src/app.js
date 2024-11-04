@@ -6,11 +6,19 @@ const score = document.querySelector('#score');
 function startApp() {
   setScore(getScore());
   setImage();
+  setRequiredNmb();
 }
 
 function setScore(scoreValue) {
   localStorage.setItem('score', scoreValue);
   score.textContent = scoreValue;
+}
+
+function setRequiredNmb() {
+  const requiredNmbField = document.querySelector('#required-number');
+  const restOfCoins = 50 - getScore();
+
+  requiredNmbField.textContent = restOfCoins;
 }
 
 function getScore() {
@@ -22,6 +30,7 @@ function getScore() {
 function addOneVal() {
   setScore(getScore() + 1);
   setImage();
+  setRequiredNmb();
 }
 
 // set new PICTURE when your score above 50
