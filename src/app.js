@@ -14,7 +14,7 @@ function setScore(scoreValue) {
 }
 
 function getScore() {
-  return Number(localStorage.getItem('score')) ?? 0;
+  return Number(localStorage.getItem('score')) || 0;
 }
 
 //addOneVal() - implement +1 to amount of echievement

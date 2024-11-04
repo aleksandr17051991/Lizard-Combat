@@ -1,6 +1,5 @@
 html,
 body {
-  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -20,6 +19,7 @@ footer p {
   font-size: 24px;
   font-weight: 800;
   color:#5f2bef;
+  cursor: pointer;
 }
 
 .header a,
@@ -44,18 +44,34 @@ footer a:hover {
 
 .game-header {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  color: #eb7208;
+  margin-bottom: 50px;
+  text-shadow: 1px 1px 15px;
+}
+
+.rewards {
+  display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 60px;
 }
 
-.game-header img {
+.rewards img {
   width: 60px;
   height: 60px;
   margin-right: 14px;
 }
 
-.game-header .score {
+.rewards .score {
   color: #fff;
   text-align: center;
   font-size: 36px;
@@ -66,6 +82,7 @@ footer a:hover {
 .circle {
   position: relative;
   user-select: none;
+  margin-bottom: 25px;
 }
 
 .circle img {
@@ -78,6 +95,20 @@ footer a:hover {
   --tiltY: 0deg;
   transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
   transition: transform 0.3s ease, box-shadow .4s cubic-bezier(.25,.8,.25,1);
+}
+
+.coins-required {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(197, 37, 37);
+  text-shadow: 1px 1px 8px #5f2bef;
+}
+
+.required-number {
+  font-size: 30px;
+  color: #eb7208;
+  text-shadow: none;
 }
 
 /* plus one marker */
