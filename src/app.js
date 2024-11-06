@@ -5,6 +5,7 @@ const score = document.querySelector('#score');
 
 function startApp() {
   setScore(getScore());
+  setNewLevel();
   setImage();
   setRequiredNmb();
 }
@@ -12,13 +13,6 @@ function startApp() {
 function setScore(scoreValue) {
   localStorage.setItem('score', scoreValue);
   score.textContent = scoreValue;
-}
-
-function setRequiredNmb() {
-  const requiredNmbField = document.querySelector('#required-number');
-  const restOfCoins = 50 - getScore();
-
-  requiredNmbField.textContent = restOfCoins;
 }
 
 function getScore() {
@@ -29,8 +23,9 @@ function getScore() {
 
 function addOneVal() {
   setScore(getScore() + 1);
-  setImage();
   setRequiredNmb();
+  setImage();
+  setNewLevel();
 }
 
 // set new PICTURE when your score above 50
@@ -38,6 +33,28 @@ function addOneVal() {
 function setImage() {
   if (getScore() >= 50) {
     circle.setAttribute('src', './assets/lizzard.png');
+  }
+}
+
+// calculate required coins in first level
+function setRequiredNmb() {
+  const requiredNmbField = document.querySelector('#required-number');
+  const restOfCoins = 50 - getScore();
+
+  requiredNmbField.textContent = restOfCoins;
+}
+
+// change game-title and required-coins box when user reaches 50 coins
+
+function setNewLevel() {
+  if (getScore() >= 50) {
+    const advancedPromptText =
+      'Advanced level!<br>Get more points and become richer.';
+    const topPrompt = document.querySelector('#top-prompt');
+    const requiredCoins = document.querySelector('#coins-required');
+
+    topPrompt.innerHTML = advancedPromptText;
+    requiredCoins.textContent = '';
   }
 }
 
