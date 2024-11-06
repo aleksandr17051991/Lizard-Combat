@@ -23,9 +23,9 @@ function getScore() {
 
 function addOneVal() {
   setScore(getScore() + 1);
+  setNewLevel();
   setRequiredNmb();
   setImage();
-  setNewLevel();
 }
 
 // set new PICTURE when your score above 50
@@ -41,15 +41,17 @@ function setRequiredNmb() {
   const requiredNmbField = document.querySelector('#required-number');
   const restOfCoins = 50 - getScore();
 
-  requiredNmbField.textContent = restOfCoins;
+  if (restOfCoins > 0) {
+    requiredNmbField.textContent = restOfCoins;
+  }
 }
 
 // change game-title and required-coins box when user reaches 50 coins
 
 function setNewLevel() {
   if (getScore() >= 50) {
-    const advancedPromptText =
-      'Advanced level!<br>Get more points and become richer.';
+    const advancedPromptText = `ADVANCED LEVEL!<br>
+      Get more points and become richer.`;
     const topPrompt = document.querySelector('#top-prompt');
     const requiredCoins = document.querySelector('#coins-required');
 
