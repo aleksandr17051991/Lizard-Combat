@@ -79,18 +79,8 @@ function imgTilt(event, rect) {
   }, 300);
 }
 
-//visual actions for Click on Lizard or Frog
-circle.addEventListener('click', (event) => {
-  event.preventDefault();
-  const rect = event.target.getBoundingClientRect();
-
-  // adding tilt for img
-  imgTilt(event, rect);
-
-  //---------------------------------------------
-
-  //adding achievement's marker "+1" near by img
-
+//adding achievement's marker "+1" near by img
+function addPlusOneMarker(event, rect) {
   const plusOneMarker = document.createElement('div');
 
   plusOneMarker.classList.add('plus-one-marker');
@@ -106,6 +96,21 @@ circle.addEventListener('click', (event) => {
   setTimeout(() => {
     plusOneMarker.remove();
   }, 2000);
+}
+
+//visual actions for Click on Lizard or Frog
+circle.addEventListener('click', (event) => {
+  event.preventDefault();
+  const rect = event.target.getBoundingClientRect();
+
+  // adding tilt for img
+  imgTilt(event, rect);
+
+  //---------------------------------------------
+
+  //adding achievement's marker "+1" near by img
+
+  addPlusOneMarker(event, rect);
   //---------------------------------------------
 
   //changing box-shadow color
