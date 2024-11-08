@@ -60,13 +60,8 @@ function setNewLevel() {
   }
 }
 
-//visual actions for Click on Lizard or Frog
-circle.addEventListener('click', (event) => {
-  event.preventDefault();
-
-  // adding tilt for img
-  const rect = event.target.getBoundingClientRect();
-
+// adding tilt for img
+function imgTilt(event, rect) {
   const offsetX = event.clientX - rect.left - rect.width / 2;
   const offsetY = event.clientY - rect.top - rect.height / 2;
 
@@ -82,6 +77,16 @@ circle.addEventListener('click', (event) => {
     circle.style.setProperty('--tiltX', `0deg`);
     circle.style.setProperty('--tiltY', `0deg`);
   }, 300);
+}
+
+//visual actions for Click on Lizard or Frog
+circle.addEventListener('click', (event) => {
+  event.preventDefault();
+  const rect = event.target.getBoundingClientRect();
+
+  // adding tilt for img
+  imgTilt(event, rect);
+
   //---------------------------------------------
 
   //adding achievement's marker "+1" near by img
@@ -109,6 +114,7 @@ circle.addEventListener('click', (event) => {
   setTimeout(() => {
     circle.style.boxShadow = '0px 0px 20px 0px rgba(89, 62, 102, 0.48)';
   }, 100);
+
   //---------------------------------------------
 });
 
