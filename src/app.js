@@ -98,31 +98,26 @@ function addPlusOneMarker(event, rect) {
   }, 2000);
 }
 
-//visual actions for Click on Lizard or Frog
-circle.addEventListener('click', (event) => {
-  event.preventDefault();
-  const rect = event.target.getBoundingClientRect();
-
-  // adding tilt for img
-  imgTilt(event, rect);
-
-  //---------------------------------------------
-
-  //adding achievement's marker "+1" near by img
-
-  addPlusOneMarker(event, rect);
-  //---------------------------------------------
-
-  //changing box-shadow color
+//changing circle shadow color
+function changeCircleShadow() {
   circle.style.boxShadow = '0px 0px 20px 10px rgba(238, 145, 31, 0.2)';
 
   setTimeout(() => {
     circle.style.boxShadow = '0px 0px 20px 0px rgba(89, 62, 102, 0.48)';
   }, 100);
+}
 
-  //---------------------------------------------
+//visual actions for Click on Lizard or Frog
+circle.addEventListener('click', (event) => {
+  event.preventDefault();
+  const rect = event.target.getBoundingClientRect();
+
+  imgTilt(event, rect);
+
+  addPlusOneMarker(event, rect);
+
+  changeCircleShadow();
 });
 
 //start app and boots all echievements
-
 startApp();
