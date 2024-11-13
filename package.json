@@ -1,0 +1,15 @@
+{
+  "name": "lizard-combat",
+  "version": "1.0.0",
+  "description": "Tapping game",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "test:dom": "jest --env=jsdom"
+  },
+  "author": "Olifer Dev",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

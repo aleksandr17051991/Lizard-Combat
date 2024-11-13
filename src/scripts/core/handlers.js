@@ -17,3 +17,5 @@ function circleHandler(event) {
 }
 
 export { circleHandler };
+
+module.exports = { circleHandler };
