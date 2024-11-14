@@ -2,24 +2,34 @@
  * @jest-environment jsdom
  */
 
-describe('Circle element have handler', () => {
+import { circleHandler } from '../core/handlers.js';
+
+jest.mock('../core/handlers.js', () => {
+  return {
+    circleHandler: jest.fn(),
+  };
+});
+
+describe("Circle element's event calls handler", () => {
   let CIRCLE_ELEMENT;
-  let mockClickHandler;
 
   beforeAll(() => {
     document.body.innerHTML = `
     <div class="circle">Circle element</div>
     `;
 
-    mockClickHandler = jest.fn();
     CIRCLE_ELEMENT = document.querySelector('.circle');
 
-    CIRCLE_ELEMENT.addEventListener('click', mockClickHandler);
+    CIRCLE_ELEMENT.addEventListener('click', circleHandler);
+  });
+
+  afterAll(() => {
+    document.body.innerHTML = '';
   });
 
   test('Click on circle and handler start working', () => {
     CIRCLE_ELEMENT.click();
 
-    expect(mockClickHandler).toHaveBeenCalled();
+    expect(circleHandler).toHaveBeenCalled();
   });
 });

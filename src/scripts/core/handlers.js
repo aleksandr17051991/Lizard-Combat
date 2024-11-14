@@ -6,6 +6,7 @@ import {
 
 //handler
 function circleHandler(event) {
+  console.log(event);
   event.preventDefault();
   const rect = event.target.getBoundingClientRect();
 
@@ -17,5 +18,3 @@ function circleHandler(event) {
 }
 
 export { circleHandler };
-
-module.exports = { circleHandler };
