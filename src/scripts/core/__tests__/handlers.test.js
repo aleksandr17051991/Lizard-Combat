@@ -16,12 +16,31 @@ jest.mock('../styleModifiers', () => {
 describe('Testing circleHandler()', () => {
   test('Should call imgTilt, addPlusOneMarker, changeCircleShadow', () => {
     const event = {
-      target: jest.fn,
       preventDefault: jest.fn(),
-      getBoundingClientRect: jest.fn(() => {
-        return {};
-      }),
+      target: {
+        getBoundingClientRect: jest.fn(() => {
+          return {
+            top: 0,
+            left: 0,
+            right: 100,
+            bottom: 100,
+            width: 100,
+            height: 100,
+          };
+        }),
+      },
     };
+
     circleHandler(event);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+
+    expect(event.target.getBoundingClientRect).toHaveBeenCalled();
+
+    expect(imgTilt).toHaveBeenCalledWith(event, expect.any(Object));
+
+    expect(addPlusOneMarker).toHaveBeenCalledWith(event, expect.any(Object));
+
+    expect(changeCircleShadow).toHaveBeenCalled();
   });
 });
