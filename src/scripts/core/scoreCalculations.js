@@ -12,7 +12,9 @@ function startApp() {
 //set score to storage and into DOM-element
 function setScore(scoreValue) {
   localStorage.setItem('score', scoreValue);
-  SCORE_ELEMENT.textContent = scoreValue;
+  if (SCORE_ELEMENT) {
+    SCORE_ELEMENT.textContent = scoreValue;
+  }
 }
 
 //get score from storage
