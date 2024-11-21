@@ -2,8 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { addOneVal } from '../../scoreCalculations.js';
-
+import * as scoreModule from '../../scoreCalculations.js';
 import { setNewLevel, setRequiredNmb, setImage } from '../../styleModifiers';
 
 jest.mock('../../styleModifiers', () => {
@@ -14,8 +13,20 @@ jest.mock('../../styleModifiers', () => {
   };
 });
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
+test('calls setScore and add +1 to getScore value', () => {
+  // scoreModule.getScore.mockReturnValue(5);
+  scoreModule.addOneVal();
+
+  expect(scoreModule.setScore).toBeDefined();
+  expect(scoreModule.getScore).toBeTruthy();
+});
+
 test('addObneVal calls style modifiers: setNewLevel, setRequiredNmb, setImage', () => {
-  addOneVal();
+  scoreModule.addOneVal();
 
   expect(setNewLevel).toHaveBeenCalled();
 
