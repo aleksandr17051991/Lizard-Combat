@@ -82,7 +82,7 @@ export {
   imgTilt,
   addPlusOneMarker,
   setNewLevel,
-  setImage,
-  setRequiredNmb,
-  changeCircleShadow,
+  setImage, //test done
+  setRequiredNmb, // test done
+  changeCircleShadow, // test done
 };
