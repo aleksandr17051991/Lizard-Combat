@@ -2,9 +2,22 @@
  * @jest-environment jsdom
  */
 
+import { SCORE_ELEMENT } from '../../../utils/constants.js';
 import { setScore } from '../../scoreCalculations.js';
 
-describe('setScore set new score to starage and add new value to SCORE_ELEMENT', () => {
+let mockScoreElement;
+
+jest.mock('../../../utils/constants.js', () => {
+  return {
+    get SCORE_ELEMENT() {
+      return mockScoreElement;
+    },
+  };
+});
+
+describe('Testing setScore', () => {
+  let scoreValue;
+
   beforeEach(() => {
     Object.defineProperty(window, 'localStorage', {
       value: {
@@ -15,54 +28,48 @@ describe('setScore set new score to starage and add new value to SCORE_ELEMENT',
 
   afterEach(() => {
     jest.clearAllMocks();
-    jest.resetModules();
   });
 
-  describe('Would set score', () => {
+  describe('SCORE_ELEMENT exists', () => {
     beforeEach(() => {
-      jest.isolateModules(() => {
-        jest.doMock('../../../utils/constants.js', () => {
-          return {
-            SCORE_ELEMENT: { textContent: '11' },
-          };
-        });
-      });
+      mockScoreElement = document.createElement('div');
+      document.body.appendChild(mockScoreElement);
+
+      scoreValue = '45';
+      setScore(scoreValue);
     });
 
-    test('set score to localStorage', () => {
-      const scoreValue = '11';
-      setScore(scoreValue);
+    afterEach(() => {
+      document.body.innerHTML = '';
+    });
 
+    test('set scoreValue to localStorage', () => {
       expect(localStorage.setItem).toHaveBeenCalledWith('score', scoreValue);
     });
 
     test('set new value to SCORE_ELEMENT', () => {
-      const { SCORE_ELEMENT } = require('../../../utils/constants.js');
-      const scoreValue = '11';
-      setScore(scoreValue);
-
       expect(SCORE_ELEMENT.textContent).toBe(scoreValue);
     });
   });
 
-  describe('Without SCORE_ELEMENT', () => {
+  describe('SCORE_ELEMENT is null', () => {
     beforeEach(() => {
-      // Изолируем модуль с моком SCORE_ELEMENT равным null
-      jest.isolateModules(() => {
-        jest.mock('../../../utils/constants.js', () => ({
-          SCORE_ELEMENT: null,
-        }));
-      });
+      mockScoreElement = null;
+      scoreValue = '110';
+
+      setScore(scoreValue);
     });
 
-    test("Wouldn't set score value in SCORE_ELEMENT", () => {
-      const scoreValue = '50';
-      const { SCORE_ELEMENT } = require('../../../utils/constants.js');
-      setScore(scoreValue);
+    test('set scoreValue to localStorage', () => {
+      expect(localStorage.setItem).toHaveBeenCalledTimes(1);
 
       expect(localStorage.setItem).toHaveBeenCalledWith('score', scoreValue);
+    });
 
+    test('SCORE_ELEMENT expect TypeError with textContent property', () => {
       expect(SCORE_ELEMENT).toBeNull();
+
+      expect(() => SCORE_ELEMENT.textContent).toThrow(TypeError);
     });
   });
 });

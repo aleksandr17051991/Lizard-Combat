@@ -42,8 +42,7 @@ function addPlusOneMarker(event, rect) {
 // change game-title and required-coins box when user reaches 50 coins
 function setNewLevel() {
   if (getScore() >= 50) {
-    const advancedPromptText = `ADVANCED LEVEL!<br>
-      Get more points and become richer.`;
+    const advancedPromptText = `ADVANCED LEVEL!<br>Get more points and become richer.`;
     const topPrompt = document.querySelector('#top-prompt');
     const requiredCoins = document.querySelector('#coins-required');
 
@@ -82,7 +81,7 @@ export {
   imgTilt,
   addPlusOneMarker,
   setNewLevel,
-  setImage, //test done
-  setRequiredNmb, // test done
-  changeCircleShadow, // test done
+  setImage,
+  setRequiredNmb,
+  changeCircleShadow,
 };

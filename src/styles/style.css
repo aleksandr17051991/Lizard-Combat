@@ -79,13 +79,13 @@ footer a:hover {
   user-select: none;
 }
 
-.circle {
+.circle-container {
   position: relative;
   user-select: none;
   margin-bottom: 25px;
 }
 
-.circle img {
+.circle-container img {
   cursor: pointer;
   width: 300px;
   height: 300px;
